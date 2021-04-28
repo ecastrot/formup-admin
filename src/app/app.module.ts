@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormBuilderModule, PreviewTemplateModule } from './lib';
 
 @NgModule({
   declarations: [
@@ -11,6 +13,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    FormBuilderModule,
+    PreviewTemplateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
