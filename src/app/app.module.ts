@@ -5,6 +5,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormBuilderModule, PreviewTemplateModule } from './lib';
+import { GeneralModule } from './general/general.module';
+import { SecurityModule } from './security/security.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { FormBuilderModule, PreviewTemplateModule } from './lib';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormBuilderModule,
-    PreviewTemplateModule
+    PreviewTemplateModule,
+    GeneralModule,
+    FormsModule,
+    SecurityModule
   ],
   providers: [],
   bootstrap: [AppComponent]

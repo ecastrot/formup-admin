@@ -1,0 +1,21 @@
+.sidebar-container {
+  width: 250px;
+  border: 1px solid #f2f2f2;
+  background-color: #fff;
+  z-index: 1000;
+  position: fixed;
+  bottom: 0;
+  top: 0;
+  right: auto;
+  overflow: hidden;
+
+  .header {
+    display: flex;
+    height: 60px;
+    line-height: 60px;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+  }
+}

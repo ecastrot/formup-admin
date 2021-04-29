@@ -1,0 +1,14 @@
+header{
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #f3f3f4;
+    height: 60px;
+    width: 100%;
+    padding: 0 20px 0 0;
+    z-index: 800;
+    border-bottom: 1px solid rgba(220,222,224,.7);
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+}
