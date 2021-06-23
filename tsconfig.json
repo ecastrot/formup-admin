@@ -1,6 +1,9 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "types" : ["node"],
+    "allowJs": true,
+    "skipLibCheck": true,
     "baseUrl": "./",
     "downlevelIteration": true,
     "outDir": "./dist/out-tsc",
