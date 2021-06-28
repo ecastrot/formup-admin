@@ -8,6 +8,7 @@ import { FormBuilderModule, PreviewTemplateModule } from './lib';
 import { GeneralModule } from './general/general.module';
 import { SecurityModule } from './security/security.module';
 import { FormsModule } from '@angular/forms';
+import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FormsModule } from '@angular/forms';
     PreviewTemplateModule,
     GeneralModule,
     FormsModule,
-    SecurityModule
+    SecurityModule,
+    AmplifyUIAngularModule
   ],
   providers: [],
   bootstrap: [AppComponent]
