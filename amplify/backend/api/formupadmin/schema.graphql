@@ -1,0 +1,11 @@
+type Restaurant @model {
+  id: ID!
+  name: String!
+  description: String!
+  city: String!
+}
+
+type Test @model {
+  id: ID!
+  name: String!
+}
