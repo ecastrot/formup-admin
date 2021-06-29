@@ -20,4 +20,21 @@ li {
       color: #023d8a;
     }
   }
+
+  .subitems {
+    list-style: none;
+    height: 0px;
+    overflow: hidden;
+    transition: transform 1s ease-out 0s;
+    transform: scaleY(0);
+    &.open {
+      height: max-content;
+      transform: scaleY(1);
+      transition: transform 0.2s ease-in 0s;
+    }
+
+    a{
+      padding-left: 16px;
+    }
+  }
 }

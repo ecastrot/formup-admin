@@ -1,6 +1,16 @@
 <li>
-    <a [routerLink]="menuItem.routerLink">
-        <span>{{menuItem.label}}</span>
-        <mat-icon>{{menuItem.icon}}</mat-icon>
-    </a>
+  <a [routerLink]="menuItem.routerLink" (click)="toogleSubmenus()">
+    <span>{{ menuItem.label }}</span>
+    <mat-icon>{{ menuItem.icon }}</mat-icon>
+  </a>
+  <ul
+    *ngIf="menuItem.submenus && menuItem.submenus?.length"
+    class="subitems"
+    [class.open]="open"
+  >
+    <fu-menu-item
+      *ngFor="let item of menuItem.submenus"
+      [menuItem]="item"
+    ></fu-menu-item>
+  </ul>
 </li>
