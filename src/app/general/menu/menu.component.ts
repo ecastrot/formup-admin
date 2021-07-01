@@ -29,7 +29,7 @@ export class MenuComponent implements OnInit {
         },
         {
           label: "Groups",
-          routerLink: "users",
+          routerLink: "userGroup",
           icon: "people_outline",
         },
       ],

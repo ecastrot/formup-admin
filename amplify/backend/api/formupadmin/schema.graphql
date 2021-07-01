@@ -1,11 +1,40 @@
-type Restaurant @model {
+type Tenant @model {
   id: ID!
   name: String!
-  description: String!
-  city: String!
+  active: Boolean!
 }
 
-type Test @model {
+type UserGroup @model {
+  @key(name: "userGroup", fields: ["postID", "content"]) {
   id: ID!
   name: String!
+  description: String
+  active: Boolean!
+  tenantId: ID!
+  tenant: Tenant @connection(fields: ["tenantId"])
+  users: [UserInGroup] @connection(keyName: "byGroup", fields: ["id"])
+}
+
+type UserInGroup
+  @model(queries: null)
+  @key(name: "byGroup", fields: ["groupID", "userID"])
+  @key(name: "byUser", fields: ["userID", "groupID"]) {
+  id: ID!
+  groupID: ID!
+  userID: ID!
+  group: UserGroup! @connection(fields: ["groupID"])
+  user: User! @connection(fields: ["userID"])
+}
+
+type User @model {
+  id: ID!
+  email: String!
+  name: String!
+  active: Boolean!
+  password: String!
+  role: String!
+  groups: [UserGroup] @connection(keyName: "userGroup", fields: ["id"])
+  tenantId: ID!
+  tenant: Tenant @connection(fields: ["tenantId"])
+  groups: [UserInGroup] @connection(keyName: "byUser", fields: ["id"])
 }
