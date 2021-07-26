@@ -1,3 +1,5 @@
+@import "/src/app/general/shared/styles/variables";
+
 /* You can add global styles to this file, and also import other style files */
 // @import '~@asoftwareworld/form-builder/theming/theming-bundle.scss';
 
@@ -11,5 +13,20 @@ body {
   background-color: #f3f3f4;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.icon-action {
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-right: 0.5em;
+  &:hover {
+    color: $main-color;
+  }
+}

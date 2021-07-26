@@ -8,6 +8,7 @@ import { MenuItemComponent } from "./menu-item/menu-item.component";
 import { MaterialModule } from "./material/material.module";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
+import { BooleanPipe } from './shared/pipes/boolean.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
     MenuItemComponent,
     SidebarComponent,
     DashboardComponent,
+    BooleanPipe,
   ],
   imports: [CommonModule, AppRoutingModule, MaterialModule],
+  exports: [BooleanPipe]
 })
 export class GeneralModule {}

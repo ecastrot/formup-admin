@@ -1,4 +1,4 @@
-import { Tenant } from "src/app/general/shared/model/tenant";
+import { Company } from "src/app/general/shared/model/company";
 import { Role } from "./role";
 import { UserGroup } from "./user-group";
 
@@ -10,6 +10,6 @@ export interface User {
   password: string;
   role: Role;
   groups: UserGroup[];
-  tenantId?: string;
-  tenant?: Tenant;
+  companyId?: string;
+  company?: Company;
 }

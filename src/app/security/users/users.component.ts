@@ -17,7 +17,6 @@ export class UsersComponent implements OnInit {
       name: [null, [Validators.required]],
       password: [null, [Validators.required]],
       role: [null, [Validators.required]],
-      userGroup: [null]
     });
   }
 

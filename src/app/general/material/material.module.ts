@@ -5,6 +5,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatTableModule } from "@angular/material/table";
 
 @NgModule({
   exports: [
@@ -14,6 +15,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatButtonModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatTableModule,
   ],
 })
 export class MaterialModule {}
