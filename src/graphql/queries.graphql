@@ -1,48 +1,139 @@
 # this is an auto generated file. This will be overwritten
-query GetRestaurant($id: ID!) {
-  getRestaurant(id: $id) {
+query GetCompany($id: ID!) {
+  getCompany(id: $id) {
     id
     name
-    description
-    city
+    active
     createdAt
     updatedAt
   }
 }
-query ListRestaurants(
-  $filter: ModelRestaurantFilterInput
+query ListCompanys(
+  $filter: ModelCompanyFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listRestaurants(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listCompanys(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
       name
-      description
-      city
+      active
       createdAt
       updatedAt
     }
     nextToken
   }
 }
-query GetTest($id: ID!) {
-  getTest(id: $id) {
+query GetUserGroup($id: ID!) {
+  getUserGroup(id: $id) {
     id
     name
+    description
+    active
+    companyId
+    company {
+      id
+      name
+      active
+      createdAt
+      updatedAt
+    }
+    users {
+      items {
+        id
+        groupID
+        userID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
 }
-query ListTests(
-  $filter: ModelTestFilterInput
+query ListUserGroups(
+  $filter: ModelUserGroupFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listTests(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listUserGroups(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
       name
+      description
+      active
+      companyId
+      company {
+        id
+        name
+        active
+        createdAt
+        updatedAt
+      }
+      users {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
+query GetUser($id: ID!) {
+  getUser(id: $id) {
+    id
+    email
+    name
+    active
+    password
+    role
+    companyId
+    company {
+      id
+      name
+      active
+      createdAt
+      updatedAt
+    }
+    groups {
+      items {
+        id
+        groupID
+        userID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListUsers(
+  $filter: ModelUserFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      email
+      name
+      active
+      password
+      role
+      companyId
+      company {
+        id
+        name
+        active
+        createdAt
+        updatedAt
+      }
+      groups {
+        nextToken
+      }
       createdAt
       updatedAt
     }

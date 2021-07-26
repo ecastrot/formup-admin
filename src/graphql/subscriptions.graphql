@@ -1,54 +1,348 @@
 # this is an auto generated file. This will be overwritten
-subscription OnCreateRestaurant {
-  onCreateRestaurant {
+subscription OnCreateCompany {
+  onCreateCompany {
+    id
+    name
+    active
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateCompany {
+  onUpdateCompany {
+    id
+    name
+    active
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteCompany {
+  onDeleteCompany {
+    id
+    name
+    active
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateUserGroup {
+  onCreateUserGroup {
     id
     name
     description
-    city
+    active
+    companyId
+    company {
+      id
+      name
+      active
+      createdAt
+      updatedAt
+    }
+    users {
+      items {
+        id
+        groupID
+        userID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
 }
-subscription OnUpdateRestaurant {
-  onUpdateRestaurant {
+subscription OnUpdateUserGroup {
+  onUpdateUserGroup {
     id
     name
     description
-    city
+    active
+    companyId
+    company {
+      id
+      name
+      active
+      createdAt
+      updatedAt
+    }
+    users {
+      items {
+        id
+        groupID
+        userID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
 }
-subscription OnDeleteRestaurant {
-  onDeleteRestaurant {
+subscription OnDeleteUserGroup {
+  onDeleteUserGroup {
     id
     name
     description
-    city
+    active
+    companyId
+    company {
+      id
+      name
+      active
+      createdAt
+      updatedAt
+    }
+    users {
+      items {
+        id
+        groupID
+        userID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
 }
-subscription OnCreateTest {
-  onCreateTest {
+subscription OnCreateUserInGroup {
+  onCreateUserInGroup {
     id
-    name
+    groupID
+    userID
+    group {
+      id
+      name
+      description
+      active
+      companyId
+      company {
+        id
+        name
+        active
+        createdAt
+        updatedAt
+      }
+      users {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    user {
+      id
+      email
+      name
+      active
+      password
+      role
+      companyId
+      company {
+        id
+        name
+        active
+        createdAt
+        updatedAt
+      }
+      groups {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
 }
-subscription OnUpdateTest {
-  onUpdateTest {
+subscription OnUpdateUserInGroup {
+  onUpdateUserInGroup {
     id
-    name
+    groupID
+    userID
+    group {
+      id
+      name
+      description
+      active
+      companyId
+      company {
+        id
+        name
+        active
+        createdAt
+        updatedAt
+      }
+      users {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    user {
+      id
+      email
+      name
+      active
+      password
+      role
+      companyId
+      company {
+        id
+        name
+        active
+        createdAt
+        updatedAt
+      }
+      groups {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
 }
-subscription OnDeleteTest {
-  onDeleteTest {
+subscription OnDeleteUserInGroup {
+  onDeleteUserInGroup {
     id
+    groupID
+    userID
+    group {
+      id
+      name
+      description
+      active
+      companyId
+      company {
+        id
+        name
+        active
+        createdAt
+        updatedAt
+      }
+      users {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    user {
+      id
+      email
+      name
+      active
+      password
+      role
+      companyId
+      company {
+        id
+        name
+        active
+        createdAt
+        updatedAt
+      }
+      groups {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateUser {
+  onCreateUser {
+    id
+    email
     name
+    active
+    password
+    role
+    companyId
+    company {
+      id
+      name
+      active
+      createdAt
+      updatedAt
+    }
+    groups {
+      items {
+        id
+        groupID
+        userID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateUser {
+  onUpdateUser {
+    id
+    email
+    name
+    active
+    password
+    role
+    companyId
+    company {
+      id
+      name
+      active
+      createdAt
+      updatedAt
+    }
+    groups {
+      items {
+        id
+        groupID
+        userID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteUser {
+  onDeleteUser {
+    id
+    email
+    name
+    active
+    password
+    role
+    companyId
+    company {
+      id
+      name
+      active
+      createdAt
+      updatedAt
+    }
+    groups {
+      items {
+        id
+        groupID
+        userID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }

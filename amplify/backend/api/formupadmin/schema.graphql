@@ -1,17 +1,16 @@
-type Tenant @model {
+type Company @model {
   id: ID!
   name: String!
   active: Boolean!
 }
 
 type UserGroup @model {
-  @key(name: "userGroup", fields: ["postID", "content"]) {
   id: ID!
   name: String!
   description: String
   active: Boolean!
-  tenantId: ID!
-  tenant: Tenant @connection(fields: ["tenantId"])
+  companyId: ID!
+  company: Company @connection(fields: ["companyId"])
   users: [UserInGroup] @connection(keyName: "byGroup", fields: ["id"])
 }
 
@@ -33,8 +32,7 @@ type User @model {
   active: Boolean!
   password: String!
   role: String!
-  groups: [UserGroup] @connection(keyName: "userGroup", fields: ["id"])
-  tenantId: ID!
-  tenant: Tenant @connection(fields: ["tenantId"])
+  companyId: ID!
+  company: Company @connection(fields: ["companyId"])
   groups: [UserInGroup] @connection(keyName: "byUser", fields: ["id"])
 }

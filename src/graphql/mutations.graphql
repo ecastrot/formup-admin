@@ -1,72 +1,384 @@
 # this is an auto generated file. This will be overwritten
-mutation CreateRestaurant(
-  $input: CreateRestaurantInput!
-  $condition: ModelRestaurantConditionInput
+mutation CreateCompany(
+  $input: CreateCompanyInput!
+  $condition: ModelCompanyConditionInput
 ) {
-  createRestaurant(input: $input, condition: $condition) {
+  createCompany(input: $input, condition: $condition) {
+    id
+    name
+    active
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateCompany(
+  $input: UpdateCompanyInput!
+  $condition: ModelCompanyConditionInput
+) {
+  updateCompany(input: $input, condition: $condition) {
+    id
+    name
+    active
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteCompany(
+  $input: DeleteCompanyInput!
+  $condition: ModelCompanyConditionInput
+) {
+  deleteCompany(input: $input, condition: $condition) {
+    id
+    name
+    active
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateUserGroup(
+  $input: CreateUserGroupInput!
+  $condition: ModelUserGroupConditionInput
+) {
+  createUserGroup(input: $input, condition: $condition) {
     id
     name
     description
-    city
+    active
+    companyId
+    company {
+      id
+      name
+      active
+      createdAt
+      updatedAt
+    }
+    users {
+      items {
+        id
+        groupID
+        userID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
 }
-mutation UpdateRestaurant(
-  $input: UpdateRestaurantInput!
-  $condition: ModelRestaurantConditionInput
+mutation UpdateUserGroup(
+  $input: UpdateUserGroupInput!
+  $condition: ModelUserGroupConditionInput
 ) {
-  updateRestaurant(input: $input, condition: $condition) {
+  updateUserGroup(input: $input, condition: $condition) {
     id
     name
     description
-    city
+    active
+    companyId
+    company {
+      id
+      name
+      active
+      createdAt
+      updatedAt
+    }
+    users {
+      items {
+        id
+        groupID
+        userID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
 }
-mutation DeleteRestaurant(
-  $input: DeleteRestaurantInput!
-  $condition: ModelRestaurantConditionInput
+mutation DeleteUserGroup(
+  $input: DeleteUserGroupInput!
+  $condition: ModelUserGroupConditionInput
 ) {
-  deleteRestaurant(input: $input, condition: $condition) {
+  deleteUserGroup(input: $input, condition: $condition) {
     id
     name
     description
-    city
+    active
+    companyId
+    company {
+      id
+      name
+      active
+      createdAt
+      updatedAt
+    }
+    users {
+      items {
+        id
+        groupID
+        userID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
 }
-mutation CreateTest(
-  $input: CreateTestInput!
-  $condition: ModelTestConditionInput
+mutation CreateUserInGroup(
+  $input: CreateUserInGroupInput!
+  $condition: ModelUserInGroupConditionInput
 ) {
-  createTest(input: $input, condition: $condition) {
+  createUserInGroup(input: $input, condition: $condition) {
     id
-    name
+    groupID
+    userID
+    group {
+      id
+      name
+      description
+      active
+      companyId
+      company {
+        id
+        name
+        active
+        createdAt
+        updatedAt
+      }
+      users {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    user {
+      id
+      email
+      name
+      active
+      password
+      role
+      companyId
+      company {
+        id
+        name
+        active
+        createdAt
+        updatedAt
+      }
+      groups {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
 }
-mutation UpdateTest(
-  $input: UpdateTestInput!
-  $condition: ModelTestConditionInput
+mutation UpdateUserInGroup(
+  $input: UpdateUserInGroupInput!
+  $condition: ModelUserInGroupConditionInput
 ) {
-  updateTest(input: $input, condition: $condition) {
+  updateUserInGroup(input: $input, condition: $condition) {
     id
-    name
+    groupID
+    userID
+    group {
+      id
+      name
+      description
+      active
+      companyId
+      company {
+        id
+        name
+        active
+        createdAt
+        updatedAt
+      }
+      users {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    user {
+      id
+      email
+      name
+      active
+      password
+      role
+      companyId
+      company {
+        id
+        name
+        active
+        createdAt
+        updatedAt
+      }
+      groups {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
 }
-mutation DeleteTest(
-  $input: DeleteTestInput!
-  $condition: ModelTestConditionInput
+mutation DeleteUserInGroup(
+  $input: DeleteUserInGroupInput!
+  $condition: ModelUserInGroupConditionInput
 ) {
-  deleteTest(input: $input, condition: $condition) {
+  deleteUserInGroup(input: $input, condition: $condition) {
     id
+    groupID
+    userID
+    group {
+      id
+      name
+      description
+      active
+      companyId
+      company {
+        id
+        name
+        active
+        createdAt
+        updatedAt
+      }
+      users {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    user {
+      id
+      email
+      name
+      active
+      password
+      role
+      companyId
+      company {
+        id
+        name
+        active
+        createdAt
+        updatedAt
+      }
+      groups {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateUser(
+  $input: CreateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  createUser(input: $input, condition: $condition) {
+    id
+    email
     name
+    active
+    password
+    role
+    companyId
+    company {
+      id
+      name
+      active
+      createdAt
+      updatedAt
+    }
+    groups {
+      items {
+        id
+        groupID
+        userID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateUser(
+  $input: UpdateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  updateUser(input: $input, condition: $condition) {
+    id
+    email
+    name
+    active
+    password
+    role
+    companyId
+    company {
+      id
+      name
+      active
+      createdAt
+      updatedAt
+    }
+    groups {
+      items {
+        id
+        groupID
+        userID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteUser(
+  $input: DeleteUserInput!
+  $condition: ModelUserConditionInput
+) {
+  deleteUser(input: $input, condition: $condition) {
+    id
+    email
+    name
+    active
+    password
+    role
+    companyId
+    company {
+      id
+      name
+      active
+      createdAt
+      updatedAt
+    }
+    groups {
+      items {
+        id
+        groupID
+        userID
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
     createdAt
     updatedAt
   }
