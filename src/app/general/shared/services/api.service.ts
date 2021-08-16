@@ -22,12 +22,12 @@ export class ApiService {
     return from(API.graphql(graphqlOperation(statement, gqlAPIServiceArguments))).pipe(map(result => result.data[nameQuery].items));
   }
 
-  saveWithCompany(nameMutation: string, statement: string, input: any): Observable<any> {
+  executeWithCompany(nameMutation: string, statement: string, input: any): Observable<any> {
     input.companyId = this.sessionService.companyId;
-    return this.save(nameMutation, statement, input)
+    return this.execute(nameMutation, statement, input)
   }
 
-  save(nameMutation: string, statement: string, input: any): Observable<any> {
+  execute(nameMutation: string, statement: string, input: any): Observable<any> {
     const gqlAPIServiceArguments: any = {
       input
     };

@@ -15,7 +15,6 @@ export class UserService {
     private sessionService: SessionService
   ) {}
 
-
   saveUser(user: User): Observable<User> {
     const statement = `mutation CreateUser($input: CreateUserInput!) {
       createUser(input: $input) {
@@ -28,7 +27,7 @@ export class UserService {
         companyId
       }
     }`;
-    return this.apiService.saveWithCompany("createUser", statement, user);
+    return this.apiService.executeWithCompany("createUser", statement, user);
   }
 
   saveGroup(userGroup: UserGroup): Observable<UserGroup> {
@@ -41,7 +40,22 @@ export class UserService {
         companyId
       }
     }`;
-    return this.apiService.saveWithCompany("createUserGroup", statement, userGroup);
+    return this.apiService.executeWithCompany(
+      "createUserGroup",
+      statement,
+      userGroup
+    );
+  }
+
+  deleteGroup(userGroup: UserGroup): Observable<UserGroup> {
+    const statement = `mutation DeleteUserGroup($input: DeleteUserGroupInput!) {
+      deleteUserGroup(input: $input) {
+        id
+      }
+    }`;
+    return this.apiService.execute("deleteUserGroup", statement, {
+      id: userGroup.id,
+    });
   }
 
   addUserToGroup(userInGroup: UserInGroup): Observable<UserInGroup> {
@@ -52,7 +66,7 @@ export class UserService {
         userID
       }
     }`;
-    return this.apiService.save("createUserInGroup", statement, userInGroup);
+    return this.apiService.execute("createUserInGroup", statement, userInGroup);
   }
 
   getUserGroupList(): Observable<UserGroup[]> {

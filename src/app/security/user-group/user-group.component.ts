@@ -129,7 +129,6 @@ export class UserGroupComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {data: dialogData});
     dialogRef.afterClosed().subscribe(result => {
       if (result){
-        console.log('elim confirmada', userToRemove);
         this.removeUser(userToRemove);
       }
     });
