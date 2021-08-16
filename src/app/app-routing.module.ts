@@ -14,6 +14,7 @@ const routes: Routes = [{
     {path:'forms', component:FormBuilderComponent },
     {path:'users', component:UsersComponent },
     {path:'userGroup', component:UserGroupListComponent },
+    {path:'userGroup/create', component:UserGroupComponent },
     {path:'', component:DashboardComponent }
   ]
 }];

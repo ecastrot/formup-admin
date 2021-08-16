@@ -30,3 +30,9 @@ body {
     color: $main-color;
   }
 }
+
+.mat-toggle {
+  mat-label {
+    margin-right: 1em;
+  }
+}

@@ -10,3 +10,9 @@ export interface UserGroup {
   company?: Company;
   users?: User[];
 }
+
+export interface UserInGroup {
+  id?: string;
+  groupID: string;
+  userID: string;
+}

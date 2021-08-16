@@ -1,6 +1,7 @@
 <mat-card class="user-list-card">
   <mat-card-header>
     <mat-card-title>User Group List</mat-card-title>
+    <button mat-button color="primary" routerLink="create">Create Group</button>
   </mat-card-header>
   <mat-card-content>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -38,4 +39,6 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
   </mat-card-content>
+
+  <router-outlet></router-outlet>
 </mat-card>

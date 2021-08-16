@@ -8,6 +8,7 @@ import { map } from "rxjs/operators";
   providedIn: "root",
 })
 export class ApiService {
+
   constructor(private sessionService: SessionService) {}
 
   getListDataWithCompany(nameQuery: string, statement: string, filter?: any): Observable<any> {
@@ -19,5 +20,17 @@ export class ApiService {
     }
     gqlAPIServiceArguments.filter = filter;
     return from(API.graphql(graphqlOperation(statement, gqlAPIServiceArguments))).pipe(map(result => result.data[nameQuery].items));
+  }
+
+  saveWithCompany(nameMutation: string, statement: string, input: any): Observable<any> {
+    input.companyId = this.sessionService.companyId;
+    return this.save(nameMutation, statement, input)
+  }
+
+  save(nameMutation: string, statement: string, input: any): Observable<any> {
+    const gqlAPIServiceArguments: any = {
+      input
+    };
+    return from(API.graphql(graphqlOperation(statement, gqlAPIServiceArguments))).pipe(map(result => result.data[nameMutation]));
   }
 }

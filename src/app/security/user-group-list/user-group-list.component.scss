@@ -2,6 +2,12 @@
   width: 90%;
   margin: 2rem;
 
+  mat-card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5em;
+  }
+
   table {
     width: 100%;
   }

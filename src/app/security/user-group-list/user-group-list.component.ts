@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { UserGroup } from "../shared/user-group";
 import { UserService } from "../shared/user.service";
 
@@ -17,7 +18,7 @@ export class UserGroupListComponent implements OnInit {
   ];
   dataSource: UserGroup[] = [];
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.userService.getUserGroupList().subscribe((data) => {

@@ -9,6 +9,7 @@ import { MaterialModule } from "./material/material.module";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { DashboardComponent } from "./dashboard/dashboard.component";
 import { BooleanPipe } from './shared/pipes/boolean.pipe';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { BooleanPipe } from './shared/pipes/boolean.pipe';
     SidebarComponent,
     DashboardComponent,
     BooleanPipe,
+    ConfirmDialogComponent,
   ],
   imports: [CommonModule, AppRoutingModule, MaterialModule],
   exports: [BooleanPipe]

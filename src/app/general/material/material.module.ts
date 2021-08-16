@@ -6,6 +6,10 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatSelectModule } from "@angular/material/select";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatTableModule } from "@angular/material/table";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
   exports: [
@@ -16,6 +20,10 @@ import { MatTableModule } from "@angular/material/table";
     MatSelectModule,
     MatSnackBarModule,
     MatTableModule,
+    MatSlideToggleModule,
+    MatAutocompleteModule,
+    MatDividerModule,
+    MatDialogModule
   ],
 })
 export class MaterialModule {}

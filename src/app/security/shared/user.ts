@@ -9,7 +9,7 @@ export interface User {
   active: boolean;
   password: string;
   role: Role;
-  groups: UserGroup[];
+  groups?: UserGroup[];
   companyId?: string;
   company?: Company;
 }
