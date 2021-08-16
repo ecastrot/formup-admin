@@ -11,6 +11,13 @@ export class ApiService {
 
   constructor(private sessionService: SessionService) {}
 
+  getDataById(nameQuery: string, statement: string, id: string): Observable<any> {
+    const gqlAPIServiceArguments: any = {
+      id
+    };
+    return from(API.graphql(graphqlOperation(statement, gqlAPIServiceArguments))).pipe(map(result => result.data[nameQuery]));
+  }
+
   getListDataWithCompany(nameQuery: string, statement: string, filter?: any): Observable<any> {
     const gqlAPIServiceArguments: any = {};
     if (filter) {

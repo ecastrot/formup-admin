@@ -8,6 +8,7 @@ import {
 import { MatAutocompleteSelectedEvent } from "@angular/material/autocomplete";
 import { MatDialog } from "@angular/material/dialog";
 import { MatTable } from "@angular/material/table";
+import { ActivatedRoute } from "@angular/router";
 import { forkJoin } from "rxjs";
 import { Observable } from "rxjs/internal/Observable";
 import { map, startWith, switchMap } from "rxjs/operators";
@@ -33,6 +34,7 @@ export class UserGroupComponent implements OnInit {
   usersInGroup: User[] = [];
   displayedColumns: string[] = ["user", "actions"];
   userSelected: User;
+  groupToEdit: UserGroup;
 
   @ViewChild(MatTable) table: MatTable<User>;
 
@@ -40,13 +42,28 @@ export class UserGroupComponent implements OnInit {
     private formBuilder: FormBuilder,
     private messagesService: MessagesService,
     private userService: UserService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private route: ActivatedRoute
   ) {
     this.userGroupForm = this.formBuilder.group({
+      id: [null],
       name: [null, [Validators.required]],
       description: [null, [Validators.required]],
       active: [true, [Validators.required]],
     });
+    this.loadGroup();
+  }
+
+  loadGroup() {
+    const idGroup = this.route.snapshot.params["id"];
+    if (idGroup) {
+      this.userService.getUserGroupById(idGroup).subscribe((groupFinded) => {
+        this.groupToEdit = groupFinded;
+        this.userGroupForm.reset(this.groupToEdit);
+        this.usersInGroup = this.groupToEdit.users;
+        this.table.renderRows();
+      });
+    }
   }
 
   ngOnInit(): void {
@@ -69,7 +86,6 @@ export class UserGroupComponent implements OnInit {
     }
 
     const userGroup: UserGroup = this.userGroupForm.value;
-    userGroup.active = true;
     this.userService
       .saveGroup(userGroup)
       .pipe(
@@ -95,7 +111,6 @@ export class UserGroupComponent implements OnInit {
         () => this.messagesService.showMessage($t.userGroup.error.save)
       );
   }
-
 
   displayFn(user: User): string {
     return user && user.name ? user.name : "";
@@ -125,15 +140,16 @@ export class UserGroupComponent implements OnInit {
       content: $t.userGroup.labels.userInGroup.removeQuestion,
       labelActionYes: $t.general.words.yes,
       labelActionNo: $t.general.words.no,
-    }
-    const dialogRef = this.dialog.open(ConfirmDialogComponent, {data: dialogData});
-    dialogRef.afterClosed().subscribe(result => {
-      if (result){
+    };
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: dialogData,
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
         this.removeUser(userToRemove);
       }
     });
   }
-
 
   userSelectedEvent(event: MatAutocompleteSelectedEvent) {
     this.userSelected = event.option.value;

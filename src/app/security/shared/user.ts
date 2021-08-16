@@ -7,7 +7,7 @@ export interface User {
   email: string;
   name: string;
   active: boolean;
-  password: string;
+  password?: string;
   role: Role;
   groups?: UserGroup[];
   companyId?: string;

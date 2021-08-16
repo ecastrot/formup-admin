@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
+import { map } from "rxjs/operators";
 import { CreateUserInGroupInput, CreateUserInput } from "src/app/API.service";
 import { ApiService } from "src/app/general/shared/services/api.service";
 import { SessionService } from "./services/session.service";
@@ -82,6 +83,42 @@ export class UserService {
       }
     }`;
     return this.apiService.getListDataWithCompany("listUserGroups", statement);
+  }
+
+  getUserGroupById(id: string): Observable<UserGroup> {
+    const statement = `query Query($id: ID!) {
+      getUserGroup(id: $id) {
+        id
+        name
+        description
+        active
+        companyId
+        users {
+          items {
+            user {
+              email
+              name
+              active
+              role
+            }
+          }
+        }
+      }
+    }`;
+    return this.apiService.getDataById("getUserGroup", statement, id).pipe(map(userGroupRemote => this.transformToUserGroup(userGroupRemote)));
+  }
+
+  transformToUserGroup(userGroupRemote: any): UserGroup {
+    const users: User[] = userGroupRemote.users.items.map(userData => userData.user);
+    const userGroup: UserGroup = {
+      id: userGroupRemote.id,
+      name: userGroupRemote.name,
+      description: userGroupRemote.description,
+      active: userGroupRemote.active,
+      companyId: userGroupRemote.companyId,
+      users: users
+    }
+    return userGroup;
   }
 
   getUserList(): Observable<User[]> {

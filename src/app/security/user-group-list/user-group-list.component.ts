@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatTable } from "@angular/material/table";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ConfirmDialogComponent } from "src/app/general/confirm-dialog/confirm-dialog.component";
 import { $t } from "src/app/general/shared/app.texto";
 import { MessagesService } from "src/app/general/shared/messages.service";
@@ -29,13 +29,19 @@ export class UserGroupListComponent implements OnInit {
   constructor(
     private userService: UserService,
     private messagesService: MessagesService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.userService.getUserGroupList().subscribe((data) => {
       this.dataSource = data;
     });
+  }
+
+  editGroup(groupToEdit: UserGroup) {
+    this.router.navigate(["create", groupToEdit.id], { relativeTo: this.route });
   }
 
   removeGroupDialog(groupToRemove: UserGroup) {

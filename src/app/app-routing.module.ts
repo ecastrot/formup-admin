@@ -15,6 +15,7 @@ const routes: Routes = [{
     {path:'users', component:UsersComponent },
     {path:'userGroup', component:UserGroupListComponent },
     {path:'userGroup/create', component:UserGroupComponent },
+    {path:'userGroup/create/:id', component:UserGroupComponent },
     {path:'', component:DashboardComponent }
   ]
 }];
