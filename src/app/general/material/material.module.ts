@@ -10,6 +10,7 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatStepperModule } from "@angular/material/stepper";
 
 @NgModule({
   exports: [
@@ -23,7 +24,8 @@ import { MatDialogModule } from "@angular/material/dialog";
     MatSlideToggleModule,
     MatAutocompleteModule,
     MatDividerModule,
-    MatDialogModule
+    MatDialogModule,
+    MatStepperModule,
   ],
 })
 export class MaterialModule {}

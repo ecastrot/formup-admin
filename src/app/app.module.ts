@@ -9,6 +9,7 @@ import { GeneralModule } from './general/general.module';
 import { SecurityModule } from './security/security.module';
 import { FormsModule } from '@angular/forms';
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
+import { MyFormsModule } from './my-forms/my-forms.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
     GeneralModule,
     FormsModule,
     SecurityModule,
+    MyFormsModule,
     AmplifyUIAngularModule
   ],
   providers: [],
