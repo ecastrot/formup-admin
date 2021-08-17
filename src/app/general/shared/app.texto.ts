@@ -5,6 +5,27 @@ export const $t = {
       no: "No",
     },
   },
+  forms:{
+    wizard:{
+      createForm:{
+        title:"Create form"
+      },
+      assignForm:{
+        title:"Assign form",
+        user: {
+          removeTile: "Remove user",
+          removeQuestion: "Are you sure to remove this user from the ones assigned to the form?",
+        },
+        group: {
+          removeTile: "Remove Group",
+          removeQuestion: "Are you sure to remove this group from the ones assigned to the form?",
+        },
+      },
+      end:{
+        title:"Abstract"
+      }
+    }
+  },
   userGroup: {
     labels: {
       userInGroup: {

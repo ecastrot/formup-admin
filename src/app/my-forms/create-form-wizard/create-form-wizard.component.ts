@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { $t } from 'src/app/general/shared/app.texto';
 
 @Component({
   selector: 'fu-create-form-wizard',
@@ -10,6 +11,9 @@ export class CreateFormWizardComponent implements OnInit {
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  firstStep = $t.forms.wizard.createForm.title;
+  secondStep = $t.forms.wizard.assignForm.title;
+  thridStep = $t.forms.wizard.end.title;
 
   constructor(private _formBuilder: FormBuilder) {}
 

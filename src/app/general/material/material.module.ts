@@ -25,7 +25,7 @@ import { MatStepperModule } from "@angular/material/stepper";
     MatAutocompleteModule,
     MatDividerModule,
     MatDialogModule,
-    MatStepperModule,
+    MatStepperModule
   ],
 })
 export class MaterialModule {}

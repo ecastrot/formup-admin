@@ -79,6 +79,13 @@ export class UserGroupComponent implements OnInit {
     );
   }
 
+  private _filter(user: string): User[] {
+    const filterValue = user.toLowerCase();
+    return this.users.filter((option) =>
+      option.name.toLowerCase().includes(filterValue)
+    );
+  }
+
   save(): void {
     if (this.userGroupForm.invalid) {
       this.messagesService.showMessage($t.userGroup.error.invalid);
@@ -118,8 +125,6 @@ export class UserGroupComponent implements OnInit {
 
   addUser() {
     if (this.userSelected) {
-      console.log("¿user >> ", this.userSelected);
-
       this.usersInGroup.push(this.userSelected);
       this.userSelected = null;
       this.userFilterControl.setValue("");
@@ -153,13 +158,6 @@ export class UserGroupComponent implements OnInit {
 
   userSelectedEvent(event: MatAutocompleteSelectedEvent) {
     this.userSelected = event.option.value;
-  }
-
-  private _filter(user: string): User[] {
-    const filterValue = user.toLowerCase();
-    return this.users.filter((option) =>
-      option.name.toLowerCase().includes(filterValue)
-    );
   }
 
   private cleanData() {

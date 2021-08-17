@@ -1,0 +1,117 @@
+<div class="assign-group-container">
+  <mat-card class="assign-form-card">
+    <mat-card-header>
+      <mat-card-title>Assign Form To User Group</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form>
+        <mat-form-field class="field-add" appearance="outline">
+          <mat-label>Group</mat-label>
+          <input
+            type="text"
+            placeholder="Select group"
+            matInput
+            [formControl]="groupFilterControl"
+            [matAutocomplete]="auto"
+          />
+          <mat-autocomplete
+            #auto="matAutocomplete"
+            [displayWith]="displayFnGroup"
+            (optionSelected)="groupSelectedEvent($event)"
+          >
+            <mat-option *ngFor="let group of filterGroups | async" [value]="group">
+              {{ group.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="addGroup()"
+          class="add-button"
+        >
+          Add
+        </button>
+      </form>
+
+      <h3>List groups</h3>
+      <table #groupsTable mat-table [dataSource]="groupsToAssign" class="mat-elevation-z8">
+        <ng-container matColumnDef="group">
+          <th mat-header-cell *matHeaderCellDef>Groups</th>
+          <td mat-cell *matCellDef="let group">{{ group.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let element">
+            <mat-icon class="icon-action" (click)="removeGroupDialog(element)"
+              >delete_outline</mat-icon
+            >
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumnsGroups"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumnsGroups"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="assign-form-card">
+    <mat-card-header>
+      <mat-card-title>Assign Form To User</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form>
+        <mat-form-field class="field-add" appearance="outline">
+          <mat-label>User</mat-label>
+          <input
+            type="text"
+            placeholder="Select user"
+            matInput
+            [formControl]="userFilterControl"
+            [matAutocomplete]="autoUsers"
+          />
+          <mat-autocomplete
+            #autoUsers="matAutocomplete"
+            [displayWith]="displayFnUser"
+            (optionSelected)="userSelectedEvent($event)"
+          >
+            <mat-option *ngFor="let user of filterUsers | async" [value]="user">
+              {{ user.name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="addUser()"
+          class="add-button"
+        >
+          Add
+        </button>
+      </form>
+
+      <h3>List users</h3>
+      <table #usersTable mat-table [dataSource]="usersToAssign" class="mat-elevation-z8">
+        <ng-container matColumnDef="user">
+          <th mat-header-cell *matHeaderCellDef>User</th>
+          <td mat-cell *matCellDef="let user">{{ user.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Actions</th>
+          <td mat-cell *matCellDef="let element">
+            <mat-icon class="icon-action" (click)="removeUserDialog(element)"
+              >delete_outline</mat-icon
+            >
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>
