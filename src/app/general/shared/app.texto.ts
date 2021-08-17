@@ -39,6 +39,7 @@ export const $t = {
     },
     error: {
       invalid: "You must complete the user group information.",
+      withoutUsers: "You must to add at least one user to the group.",
       save: "User group could not be created",
       delete: "User group could not be deleted",
     },

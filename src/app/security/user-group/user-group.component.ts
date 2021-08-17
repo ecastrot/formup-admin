@@ -92,6 +92,11 @@ export class UserGroupComponent implements OnInit {
       return;
     }
 
+    if (!this.usersInGroup.length) {
+      this.messagesService.showMessage($t.userGroup.error.withoutUsers);
+      return;
+    }
+
     const userGroup: UserGroup = this.userGroupForm.value;
     this.userService
       .saveGroup(userGroup)

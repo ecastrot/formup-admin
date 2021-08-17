@@ -15,13 +15,7 @@ import { UserService } from "../shared/user.service";
   styleUrls: ["./user-group-list.component.scss"],
 })
 export class UserGroupListComponent implements OnInit {
-  displayedColumns: string[] = [
-    "name",
-    "description",
-    "active",
-    "users",
-    "actions",
-  ];
+  displayedColumns: string[] = ["name", "description", "active", "actions"];
   dataSource: UserGroup[] = [];
 
   @ViewChild(MatTable) table: MatTable<UserGroup>;
@@ -41,7 +35,9 @@ export class UserGroupListComponent implements OnInit {
   }
 
   editGroup(groupToEdit: UserGroup) {
-    this.router.navigate(["create", groupToEdit.id], { relativeTo: this.route });
+    this.router.navigate(["create", groupToEdit.id], {
+      relativeTo: this.route,
+    });
   }
 
   removeGroupDialog(groupToRemove: UserGroup) {
@@ -65,11 +61,12 @@ export class UserGroupListComponent implements OnInit {
     this.userService.deleteGroup(groupToRemove).subscribe(
       () => {
         this.messagesService.showMessage($t.userGroup.success.delete);
-        this.dataSource = this.dataSource.filter(group => group !== groupToRemove);
+        this.dataSource = this.dataSource.filter(
+          (group) => group !== groupToRemove
+        );
         this.table.renderRows();
       },
       () => this.messagesService.showMessage($t.userGroup.error.delete)
     );
   }
-
 }
