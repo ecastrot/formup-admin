@@ -5,6 +5,8 @@ import {
   FormGroup,
   Validators,
 } from "@angular/forms";
+import { ActivatedRoute } from "@angular/router";
+import { Observable } from "rxjs";
 import { $t } from "src/app/general/shared/app.texto";
 import { MessagesService } from "src/app/general/shared/messages.service";
 import { Role, ROLES } from "../shared/role";
@@ -19,15 +21,30 @@ import { UserService } from "../shared/user.service";
 export class UsersComponent implements OnInit {
   userForm: FormGroup;
   roles: Role[] = ROLES;
+  userToEdit: User;
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private messagesService: MessagesService
-  ) {}
+    private messagesService: MessagesService,
+    private route: ActivatedRoute
+  ) {
+    this.loadUser();
+  }
+
+  loadUser() {
+    const idUser = this.route.snapshot.params["id"];
+    if (idUser) {
+      this.userService.getUserById(idUser).subscribe((userFinded) => {
+        this.userToEdit = userFinded;
+        this.userForm.reset(this.userToEdit);
+      });
+    }
+  }
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
+      id: [null],
       email: [null, [Validators.required, Validators.email]],
       name: [null, [Validators.required]],
       password: [null, [Validators.required]],
@@ -45,8 +62,16 @@ export class UsersComponent implements OnInit {
       this.messagesService.showMessage($t.userGroup.error.invalid);
       return;
     }
+
     const user: User = this.userForm.getRawValue();
-    this.userService.saveUser(user).subscribe(
+    let $actionSave: Observable<User>;
+    if (this.userToEdit) {
+      $actionSave = this.userService.updateUser(user);
+    } else {
+      $actionSave = this.userService.saveUser(user);
+    }
+
+    $actionSave.subscribe(
       () => {
         this.messagesService.showMessage($t.user.success.save);
         this.userForm.reset();

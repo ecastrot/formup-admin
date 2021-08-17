@@ -1,4 +1,5 @@
 <mat-card class="user-card">
+  <button mat-button color="primary" [routerLink]="['/users']" class="back-button">Back to User List</button>
   <mat-card-header>
     <mat-card-title>Create User</mat-card-title>
   </mat-card-header>
@@ -52,6 +53,6 @@
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)="save()">Create</button>
+    <button mat-raised-button color="primary" (click)="save()">Save</button>
   </mat-card-actions>
 </mat-card>

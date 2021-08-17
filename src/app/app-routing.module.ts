@@ -5,6 +5,7 @@ import { LayoutComponent } from './general/layout/layout.component';
 import { CreateFormWizardComponent } from './my-forms/create-form-wizard/create-form-wizard.component';
 import { UserGroupListComponent } from './security/user-group-list/user-group-list.component';
 import { UserGroupComponent } from './security/user-group/user-group.component';
+import { UserListComponent } from './security/user-list/user-list.component';
 import { UsersComponent } from './security/users/users.component';
 
 const routes: Routes = [{
@@ -12,7 +13,9 @@ const routes: Routes = [{
   component: LayoutComponent,
   children: [
     {path:'forms', component:CreateFormWizardComponent },
-    {path:'users', component:UsersComponent },
+    {path:'users', component:UserListComponent },
+    {path:'users/create', component:UsersComponent },
+    {path:'users/create/:id', component:UsersComponent },
     {path:'userGroup', component:UserGroupListComponent },
     {path:'userGroup/create', component:UserGroupComponent },
     {path:'userGroup/create/:id', component:UserGroupComponent },

@@ -5,26 +5,28 @@ export const $t = {
       no: "No",
     },
   },
-  forms:{
-    wizard:{
-      createForm:{
-        title:"Create form"
+  forms: {
+    wizard: {
+      createForm: {
+        title: "Create form",
       },
-      assignForm:{
-        title:"Assign form",
+      assignForm: {
+        title: "Assign form",
         user: {
           removeTile: "Remove user",
-          removeQuestion: "Are you sure to remove this user from the ones assigned to the form?",
+          removeQuestion:
+            "Are you sure to remove this user from the ones assigned to the form?",
         },
         group: {
           removeTile: "Remove Group",
-          removeQuestion: "Are you sure to remove this group from the ones assigned to the form?",
+          removeQuestion:
+            "Are you sure to remove this group from the ones assigned to the form?",
         },
       },
-      end:{
-        title:"Abstract"
-      }
-    }
+      end: {
+        title: "Abstract",
+      },
+    },
   },
   userGroup: {
     labels: {
@@ -33,8 +35,8 @@ export const $t = {
         removeQuestion: "Are you sure to remove this user from the group?",
       },
       group: {
-        removeTile: "Remove Group",
-        removeQuestion: "Are you sure to remove this group?",
+        deleteTile: "Delete Group",
+        deleteQuestion: "Are you sure to delete this group?",
       },
     },
     error: {
@@ -44,17 +46,22 @@ export const $t = {
       delete: "User group could not be deleted",
     },
     success: {
-      save: "User group was created successfully",
+      save: "User group was saved successfully",
       delete: "User group was deleted successfully",
     },
   },
   user: {
+    labels: {
+      deleteTile: "Delete User",
+      deleteQuestion: "Are you sure to delete this user?",
+    },
     error: {
       invalid: "You must complete the user information.",
       save: "User could not be created",
     },
     success: {
-      save: "User was created successfully",
+      save: "User was saved successfully",
+      delete: "User was deleted successfully",
     },
   },
 };

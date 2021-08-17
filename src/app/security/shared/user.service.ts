@@ -31,6 +31,46 @@ export class UserService {
     return this.apiService.executeWithCompany("createUser", statement, user);
   }
 
+  updateUser(user: User): Observable<User> {
+    const statement = `mutation UpdateUser($input: UpdateUserInput!) {
+      updateUser(input: $input) {
+        id
+        email
+        name
+        active
+        password
+        role
+        companyId
+      }
+    }`;
+    return this.apiService.executeWithCompany("updateUser", statement, user);
+  }
+
+  deleteUser(user: User): Observable<User> {
+    const statement = `mutation DeleteUser($input: DeleteUserInput!) {
+      deleteUser(input: $input) {
+        id
+      }
+    }`;
+    return this.apiService.execute("deleteUser", statement, {
+      id: user.id,
+    });
+  }
+
+  getUserById(id: string): Observable<User> {
+    const statement = `query Query($id: ID!) {
+      getUser(id: $id) {
+        id
+        email
+        name
+        active
+        role
+        companyId
+      }
+    }`;
+    return this.apiService.getDataById("getUser", statement, id);
+  }
+
   saveGroup(userGroup: UserGroup): Observable<UserGroup> {
     const statement = `mutation CreateUserGroup($input: CreateUserGroupInput!) {
       createUserGroup(input: $input) {

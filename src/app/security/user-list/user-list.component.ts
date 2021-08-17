@@ -1,24 +1,24 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { MatTable } from "@angular/material/table";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import { ConfirmDialogComponent } from "src/app/general/confirm-dialog/confirm-dialog.component";
 import { $t } from "src/app/general/shared/app.texto";
 import { MessagesService } from "src/app/general/shared/messages.service";
 import { ConfirmDialogData } from "src/app/general/shared/model/confirm-dialog-data";
-import { UserGroup } from "../shared/user-group";
+import { User } from "../shared/user";
 import { UserService } from "../shared/user.service";
 
 @Component({
-  selector: "fu-user-group-list",
-  templateUrl: "./user-group-list.component.html",
-  styleUrls: ["./user-group-list.component.scss"],
+  selector: "fu-user-list",
+  templateUrl: "./user-list.component.html",
+  styleUrls: ["./user-list.component.scss"],
 })
-export class UserGroupListComponent implements OnInit {
-  displayedColumns: string[] = ["name", "description", "active", "actions"];
-  dataSource: UserGroup[] = [];
+export class UserListComponent implements OnInit {
+  displayedColumns: string[] = ["email", "name", "active", "role", "actions"];
+  dataSource: User[] = [];
 
-  @ViewChild(MatTable) table: MatTable<UserGroup>;
+  @ViewChild(MatTable) table: MatTable<User>;
 
   constructor(
     private userService: UserService,
@@ -29,21 +29,21 @@ export class UserGroupListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.getUserGroupList().subscribe((data) => {
+    this.userService.getUserList().subscribe((data) => {
       this.dataSource = data;
     });
   }
 
-  editGroup(groupToEdit: UserGroup) {
-    this.router.navigate(["create", groupToEdit.id], {
+  editUser(userToEdit: User) {
+    this.router.navigate(["create", userToEdit.id], {
       relativeTo: this.route,
     });
   }
 
-  removeGroupDialog(groupToRemove: UserGroup) {
+  deleteUserDialog(userToRemove: User) {
     const dialogData: ConfirmDialogData = {
-      title: $t.userGroup.labels.group.deleteTile,
-      content: $t.userGroup.labels.group.deleteQuestion,
+      title: $t.user.labels.deleteTile,
+      content: $t.user.labels.deleteQuestion,
       labelActionYes: $t.general.words.yes,
       labelActionNo: $t.general.words.no,
     };
@@ -52,17 +52,17 @@ export class UserGroupListComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.removeGroup(groupToRemove);
+        this.deleteUser(userToRemove);
       }
     });
   }
 
-  private removeGroup(groupToRemove: UserGroup) {
-    this.userService.deleteGroup(groupToRemove).subscribe(
+  private deleteUser(userToRemove: User) {
+    this.userService.deleteUser(userToRemove).subscribe(
       () => {
-        this.messagesService.showMessage($t.userGroup.success.delete);
+        this.messagesService.showMessage($t.user.success.delete);
         this.dataSource = this.dataSource.filter(
-          (group) => group !== groupToRemove
+          (group) => group !== userToRemove
         );
         this.table.renderRows();
       },
